@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2024 at 02:55 PM
+-- Generation Time: Aug 09, 2024 at 05:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -115,7 +115,8 @@ CREATE TABLE `keperluans` (
 --
 
 INSERT INTO `keperluans` (`id`, `kunjungan_id`, `keperluan`, `created_at`, `updated_at`) VALUES
-(1, 1, 'berobat', NULL, NULL);
+(1, 1, 'berobat', NULL, NULL),
+(2, 6, 'kontrol kesehatan', '2024-08-08 17:04:08', '2024-08-08 17:04:08');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,6 @@ INSERT INTO `keperluans` (`id`, `kunjungan_id`, `keperluan`, `created_at`, `upda
 CREATE TABLE `kunjungans` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tamu_id` bigint(20) UNSIGNED NOT NULL,
-  `jam_kunjungan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -135,8 +135,13 @@ CREATE TABLE `kunjungans` (
 -- Dumping data for table `kunjungans`
 --
 
-INSERT INTO `kunjungans` (`id`, `tamu_id`, `jam_kunjungan`, `created_at`, `updated_at`) VALUES
-(1, 1, '2024-06-29 00:29:34', NULL, NULL);
+INSERT INTO `kunjungans` (`id`, `tamu_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
+(2, 1, '2024-08-08 16:24:45', '2024-08-08 16:24:45'),
+(3, 1, '2024-08-08 16:28:43', '2024-08-08 16:28:43'),
+(4, 1, '2024-08-08 17:01:23', '2024-08-08 17:01:23'),
+(5, 1, '2024-08-08 17:01:59', '2024-08-08 17:01:59'),
+(6, 1, '2024-08-08 17:04:08', '2024-08-08 17:04:08');
 
 -- --------------------------------------------------------
 
@@ -155,12 +160,12 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2024_06_29_062101_create_tamus_table', 1),
-(5, '2024_06_29_062110_create_kunjungans_table', 1),
-(6, '2024_06_29_062118_create_keperluans_table', 1);
+(7, '0001_01_01_000000_create_users_table', 1),
+(8, '0001_01_01_000001_create_cache_table', 1),
+(9, '0001_01_01_000002_create_jobs_table', 1),
+(10, '2024_06_29_062101_create_tamus_table', 1),
+(13, '2024_06_29_062110_create_kunjungans_table', 2),
+(14, '2024_06_29_062118_create_keperluans_table', 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +199,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('JHIqvfZbMCzEXQfubmom3us5aVYV1shnr0gRmXSJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieW5zTWk5Q2xpQlBicTNVU3YwdjVXc25sTkZldUVWZThYdFcwVXo4MiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9rZXBlcmx1YW4vY3JlYXRlLzEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1719665280);
+('nwoQqLVNiNaaquuQNAUwWwP8qPvO7Ij88EgnVKcl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVk90MzRjQXB0c3VVT0ZkRTVmZ0o5OFZlaUY0dWFob3RxdVVYa2RtZyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9rZXBlcmx1YW4vMSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1723165732);
 
 -- --------------------------------------------------------
 
@@ -216,7 +221,7 @@ CREATE TABLE `tamus` (
 --
 
 INSERT INTO `tamus` (`id`, `nama`, `nik`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 'zaki', '192018346281', 'jl durian', '2024-06-29 00:29:34', '2024-06-29 00:29:34');
+(1, 'zaki', '1221829331', 'jln danau aji', '2024-08-06 07:12:01', '2024-08-06 07:12:01');
 
 -- --------------------------------------------------------
 
@@ -338,19 +343,19 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `keperluans`
 --
 ALTER TABLE `keperluans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kunjungans`
 --
 ALTER TABLE `kunjungans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tamus`
