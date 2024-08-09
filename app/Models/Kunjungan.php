@@ -13,7 +13,6 @@ class Kunjungan extends Model
 
     protected $fillable = [
         'tamu_id',
-        'jam_kunjungan'
     ];
 
     public function tamus(): BelongsTo{
@@ -21,6 +20,6 @@ class Kunjungan extends Model
     }
 
     public function keperluans(): HasMany{
-        return $this->hasMany(Kepeluan::class);
+        return $this->hasMany(Keperluan::class);
     }
 }

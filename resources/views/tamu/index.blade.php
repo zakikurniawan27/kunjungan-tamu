@@ -19,14 +19,16 @@
             </thead>
             <tbody>
                 @foreach($data as $tamu)
-                <td class="px-44">{{ $tamu->nama }}</td>
-                <td class="px-44">{{ $tamu->nik }}</td>
-                <td class="px-44">{{ $tamu->alamat }}</td>
-                <td class="px-20">
-                    <a href="{{ route('show', $tamu->id) }}">
-                        <button class="w-16 h-10 bg-red-600 rounded-md text-white hover:cursor-pointer hover:bg-red-700">Button</button>
-                    </a>
-                </td>
+                <tr>
+                    <td class="px-44">{{ $tamu->nama }}</td>
+                    <td class="px-44">{{ $tamu->nik }}</td>
+                    <td class="px-44">{{ $tamu->alamat }}</td>
+                    <td class="px-20">
+                        <a href="{{ route('show', $tamu->id) }}">
+                            <button class="w-16 h-10 bg-red-600 rounded-md text-white hover:cursor-pointer hover:bg-red-700">Button</button>
+                        </a>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

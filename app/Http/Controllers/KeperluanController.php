@@ -14,7 +14,8 @@ class KeperluanController extends Controller
      */
     public function indexKeperluan()
     {
-        //
+
+        return view('keperluan.indexKeperluan');
     }
 
     /**
@@ -22,26 +23,29 @@ class KeperluanController extends Controller
      */
     public function create(string $id)
     {
+        $dataKunjungan = Kunjungan::find($id);
         $data = Tamu::join('kunjungans', 'tamus.id', '=', 'kunjungans.tamu_id')->join('keperluans', 'kunjungans.id', '=', 'keperluans.kunjungan_id')->where('tamus.id', '=', $id)->get();
 
 
-        return view('keperluan.create', compact('data'));
+        return view('keperluan.create', compact('dataKunjungan','data'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeKeperluan(Request $request)
+    public function storeKeperluan(Request $request, string $id)
     {
 
-        $validas = $request->validate([
-            'keperluan'=> 'required'
+        $data = Kunjungan::create([
+            'tamu_id'=> $id,
         ]);
 
-        $validas['kunjungan_id'] = kunjungans()->id();
+        $data->keperluans()->create([
+            'kunjungan_id'=> $id,
+            'keperluan'=>$request->keperluan,
+        ]);
 
-        Keperluan::create($validas);
-        return redirect()->route('index');
+        return redirect()->route('indexKeperluan');
     }
 
     /**

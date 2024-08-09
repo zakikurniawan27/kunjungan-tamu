@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tamu_id');
             $table->foreign('tamu_id')->references('id')->on('tamus');
-            $table->timestamp('jam_kunjungan');
             $table->timestamps();
         });
     }

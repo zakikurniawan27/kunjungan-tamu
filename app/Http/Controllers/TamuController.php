@@ -52,10 +52,11 @@ class TamuController extends Controller
      */
     public function show(string $id)
     {
+        $dataTamu = Tamu::find($id);
         $data = Tamu::join('kunjungans', 'tamus.id', '=', 'kunjungans.tamu_id')->join('keperluans', 'kunjungans.id', '=', 'keperluans.kunjungan_id')->where('tamus.id', '=', $id)->get();
 
 
-        return view('keperluan.index', compact('data'));
+        return view('keperluan.indexKeperluan', compact('dataTamu','data'));
     }
 
     /**
